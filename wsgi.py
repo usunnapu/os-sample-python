@@ -5,7 +5,8 @@ application = Flask(__name__)
 
 
 def generate_query_example_url(language):
-    url = 'http://100.82.38.31:6001/query_example?language={}'.format(language)
+    url = 'http://nginx.app.svc.cluster.local/ms1_query?language={}'.format(language)
+    print('generated url: {}'.format(url))
     return url
 
 def display(response):
@@ -13,7 +14,7 @@ def display(response):
 
 @application.route("/")
 def hello():
-    return "Hello This is MS1!"
+    return f"<h1>External User Facing Nginx WebServer</h1>"
 
 @application.route('/language', methods=["POST", "GET"])
 def login():
@@ -22,13 +23,9 @@ def login():
         url = generate_query_example_url(language)
         response = requests.get(url)
         display(response)
-        return redirect(url_for("language", lang=language))
+        return f"<h1> IT WORKS </h1>"
     else:
         return render_template("language.html")
-
-@application.route("/<lang>")
-def language(lang):
-    return f"<h1>{lang}</h1>"
 
 if __name__ == "__main__":
     application.run(debug=True, port=5000)
