@@ -5,7 +5,7 @@ application = Flask(__name__)
 
 
 def generate_query_example_url(language):
-    url = 'http://nginx.app.svc.cluster.local/ms1_query?language={}'.format(language)
+    url = 'http://nginx.ms.svc.cluster.local/ms1_query?language={}'.format(language)
     print('generated url: {}'.format(url))
     return url
 
