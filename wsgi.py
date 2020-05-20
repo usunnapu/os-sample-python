@@ -23,7 +23,7 @@ def language():
     if request.method == "POST":
         language = request.form.get('language')
         send_message_to_vran(language)
-        return f'<h1> Input: {} </h1>'.format(language)
+        return f"<h1> IT WORKS </h1>"
     else:
         return render_template("language.html")
 
