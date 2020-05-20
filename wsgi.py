@@ -10,7 +10,7 @@ def send_message_to_vran(msg):
     print('establishing connect to vran service url port 80')
     conn.connect(('vran.app.svc.cluster.local',80))
     print('connected to vran service url port 80')
-    conn.sendall(msg)
+    conn.sendall(msg.encode())
     print('sent msg: {}'.format(msg))
     conn.close()
 
